@@ -1,0 +1,138 @@
+SELECT HIREDATE from EMP
+    -> WHERE HIREDATE==1982-12-09;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '==1982-12-09' at line 2
+mysql> SELECT HIREDATE from EMP WHERE HIREDATE='1982-12-09';
++------------+
+| HIREDATE   |
++------------+
+| 1982-12-09 |
+| 1982-12-09 |
++------------+
+
+
+
+
+
+SELECT ENAME from EMP WHERE HIREDATE='1982-12-09';
++-------+
+| ENAME |
++-------+
+| SCOTT |
+| SCOTT |
+
+	
+
+mysql> SELECT ENAME,EMPNO FROM EMP;
++--------+-------+
+| ENAME  | EMPNO |
++--------+-------+
+| SMITH  |  7369 |
+| ALLEN  |  7499 |
+| WARD   |  7521 |
+| JONES  |  7566 |
+| MARTIN |  7654 |
+| BLAKE  |  7698 |
+| CLARK  |  7782 |
+| SCOTT  |  7788 |
+| KING   |  7839 |
+| TURNER |  7844 |
+| ADAMS  |  7876 |
+| JAMES  |  7900 |
+| FORD   |  7902 |
+| MILLER |  7934 |
+| SMITH  |  7369 |
+| ALLEN  |  7499 |
+| WARD   |  7521 |
+| JONES  |  7566 |
+| MARTIN |  7654 |
+| BLAKE  |  7698 |
+| CLARK  |  7782 |
+| SCOTT  |  7788 |
+| KING   |  7839 |
+| TURNER |  7844 |
+| ADAMS  |  7876 |
+| JAMES  |  7900 |
+| FORD   |  7902 |
+| MILLER |  7934 |
++--------+-------+
+
+
++-------+------+
+| ENAME | SAL  |
++-------+------+
+| KING  | 5000 |
+| KING  | 5000 |
++-------+------+
+
+
+
+
+mysql> SELECT ENAME,EMPNO,SAL FROM EMP;
++--------+-------+------+
+| ENAME  | EMPNO | SAL  |
++--------+-------+------+
+| SMITH  |  7369 |  800 |
+| ALLEN  |  7499 | 1600 |
+| WARD   |  7521 | 1250 |
+| JONES  |  7566 | 2975 |
+| MARTIN |  7654 | 1250 |
+| BLAKE  |  7698 | 2850 |
+| CLARK  |  7782 | 2450 |
+| SCOTT  |  7788 | 3000 |
+| KING   |  7839 | 5000 |
+| TURNER |  7844 | 1500 |
+| ADAMS  |  7876 | 1100 |
+| JAMES  |  7900 |  950 |
+| FORD   |  7902 | 3000 |
+| MILLER |  7934 | 1300 |
+| SMITH  |  7369 |  800 |
+| ALLEN  |  7499 | 1600 |
+| WARD   |  7521 | 1250 |
+| JONES  |  7566 | 2975 |
+| MARTIN |  7654 | 1250 |
+| BLAKE  |  7698 | 2850 |
+| CLARK  |  7782 | 2450 |
+| SCOTT  |  7788 | 3000 |
+| KING   |  7839 | 5000 |
+| TURNER |  7844 | 1500 |
+| ADAMS  |  7876 | 1100 |
+| JAMES  |  7900 |  950 |
+| FORD   |  7902 | 3000 |
+| MILLER |  7934 | 1300 |
++--------+-------+------+
+28 rows in set (0.00 sec)
+
+
+mysql> SELECT * FROM EMP
+    -> WHERE COMM IS NULL;
++-------+--------+-----------+------+------------+------+------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL  | COMM | DEPTNO |
++-------+--------+-----------+------+------------+------+------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800 | NULL |     20 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975 | NULL |     20 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450 | NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000 | NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000 | NULL |     10 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100 | NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950 | NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000 | NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300 | NULL |     10 |
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800 | NULL |     20 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975 | NULL |     20 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450 | NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000 | NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000 | NULL |     10 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100 | NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950 | NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000 | NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300 | NULL |     10 |
++-------+--------+-----------+------+------------+------+------+--------+
+20 rows in set (0.00 sec)
+
+
+
+
+Display Records whose salary greater than 8000.
+

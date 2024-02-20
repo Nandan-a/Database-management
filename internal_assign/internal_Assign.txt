@@ -1,0 +1,481 @@
+1. Display the Supplier table in the descending order of CITY.
+
+mysql> select CITY from suppliers order by CITY desc;
++--------+
+| CITY   |
++--------+
+| Paris  |
+| Paris  |
+| London |
+| London |
+| Athens |
++--------+
+5 rows in set (0.00 sec)
+
+2. Display the Part Table in the ascending order of CITY.
+
+mysql> select CITY from parts order by CITY ;
++--------+
+| CITY   |
++--------+
+| INDIA  |
+| London |
+| London |
+| London |
+| Oslo   |
+| Paris  |
+| Paris  |
++--------+
+7 rows in set (0.00 sec)
+
+3. Display all the Suppliers with a status between 10 and 20.
+
+mysql> select * from suppliers where STATUS between 10 and 20;
++------+-------+--------+--------+
+| SNUM | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+|    1 | Smith |     20 | London |
+|    2 | Jones |     10 | Paris  |
+|    4 | Clark |     20 | London |
++------+-------+--------+--------+
+3 rows in set (0.00 sec)
+
+4. Display all the Parts and their Weight, which are not in the range of 10 and 15.
+
+mysql> select WEIGHT from parts where WEIGHT not between 10 and 15;
++--------+
+| WEIGHT |
++--------+
+|   17.0 |
+|   17.0 |
+|   19.0 |
+|   25.0 |
++--------+
+4 rows in set (0.00 sec)
+
+5. Display all the Part names starting with the letter ‘S’.
+
+mysql> select PNAME from parts where PNAME  LIKE 'S%' ;
++-------+
+| PNAME |
++-------+
+| Screw |
+| Screw |
++-------+
+2 rows in set (0.00 sec)
+
+6. Display all the Suppliers, belonging to cities starting with the letter ‘L’.
+
+mysql> select * from suppliers where CITY like 'L%';
++------+-------+--------+--------+
+| SNUM | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+|    1 | Smith |     20 | London |
+|    4 | Clark |     20 | London |
++------+-------+--------+--------+
+2 rows in set (0.00 sec)
+
+
+7.Display all the Projects, with the third letter in JNAME as ‘n’.
+
+
+8. Create Database Gadgets
+
+9. Create Mobile table in it with fileds mobileid , model , DateOfManufacture , price 
+
+
+
+mysql> Create database Gadgets;
+Query OK, 1 row affected (0.29 sec)
+
+mysql> use Gadgets;
+Database changed
+
+mysql> create table Mobile
+    -> (ID int Primary key, Model varchar(20) ,DOM varchar(20),Price int );
+Query OK, 0 rows affected (0.86 sec)
+
+mysql> desc Mobile;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| ID    | int         | NO   | PRI | NULL    |       |
+| Model | varchar(20) | YES  |     | NULL    |       |
+| DOM   | varchar(20) | YES  |     | NULL    |       |
+| Price | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+
+10. Add records to Mobile table.
+
+mysql> insert into Mobile values
+    -> (1, 'Apple15','2023-10-01',  150000),
+    -> (2,'Redmi','2022-09-09',20000),
+    -> (3,'OnePlus','2021-05-03',25000),
+    -> (4,'Oppo','2020-07-08',10000),
+    -> (5,'Vivo','2022-07-08',12000);
+Query OK, 5 rows affected (0.15 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+
+mysql> select * from Mobile;
++----+---------+------------+--------+
+| ID | Model   | DOM        | Price  |
++----+---------+------------+--------+
+|  1 | Apple15 | 2023-10-01 | 150000 |
+|  2 | Redmi   | 2022-09-09 |  20000 |
+|  3 | OnePlus | 2021-05-03 |  25000 |
+|  4 | Oppo    | 2020-07-08 |  10000 |
+|  5 | Vivo    | 2022-07-08 |  12000 |
++----+---------+------------+--------+
+5 rows in set (0.00 sec)
+
+11. Create Person table with fields Personid, name, salary, dob.
+
+mysql> create table Person (PersonID int Primary key, Name varchar(20) ,Salary int,DOB varchar(20) );
+
+Query OK, 0 rows affected (1.74 sec)
+
+mysql> desc Person;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| PersonID | int         | NO   | PRI | NULL    |       |
+| Name     | varchar(20) | YES  |     | NULL    |       |
+| Salary   | int         | YES  |     | NULL    |       |
+| DOB      | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+
+12. Insert 5 records in  person. 
+
+
+mysql> desc Person;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| PersonID | int         | NO   | PRI | NULL    |       |
+| Name     | varchar(20) | YES  |     | NULL    |       |
+| Salary   | int         | YES  |     | NULL    |       |
+| DOB      | varchar(20) | YES  |     | NULL    |       |
+| ID       | int         | YES  | MUL | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+ 14. Create mobile id as primary key in mobile table first and then only you can use it as foreign key in another table it should be null and unique.
+
+mysql> alter table Person add foreign key (ID) references Mobile(ID) ;
+Query OK, 5 rows affected (2.80 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> desc Person;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| PersonID | int         | NO   | PRI | NULL    |       |
+| Name     | varchar(20) | YES  |     | NULL    |       |
+| Salary   | int         | YES  |     | NULL    |       |
+| DOB      | varchar(20) | YES  |     | NULL    |       |
+| ID       | int         | YES  | MUL | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+15. update details in mobileid column person having id 2 has oppo. id 3 is having vivo and id 5 having Redmi.
+
+mysql> update Person set ID = 4 where PersonId =2;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Person;
++----------+----------+--------+------------+------+
+| PersonID | Name     | Salary | DOB        | ID   |
++----------+----------+--------+------------+------+
+|        1 | Aniket   |  50000 | 2001-12-25 | NULL |
+|        2 | Ritesh   |  56000 | 2001-02-13 |    4 |
+|        3 | Nandan   | 100000 | 2002-01-24 | NULL |
+|        4 | Shreyash |  65000 | 2001-02-14 | NULL |
+|        5 | Kaka     | 100000 | 2000-04-11 | NULL |
++----------+----------+--------+------------+------+
+5 rows in set (0.00 sec)
+
+mysql> update Person set ID = 5 where PersonId =3;
+Query OK, 1 row affected (0.15 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Person;
++----------+----------+--------+------------+------+
+| PersonID | Name     | Salary | DOB        | ID   |
++----------+----------+--------+------------+------+
+|        1 | Aniket   |  50000 | 2001-12-25 | NULL |
+|        2 | Ritesh   |  56000 | 2001-02-13 |    4 |
+|        3 | Nandan   | 100000 | 2002-01-24 |    5 |
+|        4 | Shreyash |  65000 | 2001-02-14 | NULL |
+|        5 | Kaka     | 100000 | 2000-04-11 | NULL |
++----------+----------+--------+------------+------+
+5 rows in set (0.00 sec)
+
+mysql> update Person set ID = 2 where PersonId =5;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Person;
++----------+----------+--------+------------+------+
+| PersonID | Name     | Salary | DOB        | ID   |
++----------+----------+--------+------------+------+
+|        1 | Aniket   |  50000 | 2001-12-25 | NULL |
+|        2 | Ritesh   |  56000 | 2001-02-13 |    4 |
+|        3 | Nandan   | 100000 | 2002-01-24 |    5 |
+|        4 | Shreyash |  65000 | 2001-02-14 | NULL |
+|        5 | Kaka     | 100000 | 2000-04-11 |    2 |
++----------+----------+--------+------------+------+
+5 rows in set (0.00 sec)
+
+
+16. Display the person details having Apple15.
+
+mysql> update Person set ID = 1 where PersonId =2;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Person;
++----------+----------+--------+------------+------+
+| PersonID | Name     | Salary | DOB        | ID   |
++----------+----------+--------+------------+------+
+|        1 | Aniket   |  50000 | 2001-12-25 | NULL |
+|        2 | Ritesh   |  56000 | 2001-02-13 |    1 |
+|        3 | Nandan   | 100000 | 2002-01-24 |    5 |
+|        4 | Shreyash |  65000 | 2001-02-14 | NULL |
+|        5 | Kaka     | 100000 | 2000-04-11 |    2 |
++----------+----------+--------+------------+------+
+5 rows in set (0.00 sec)
+
+
+mysql> select m.Model,p.PersonID,p.Name from Person p inner join Mobile m on p.ID = m.ID where p.ID like 1;
+
++---------+----------+--------+
+| Model   | PersonID | Name   |
++---------+----------+--------+
+| Apple15 |        2 | Ritesh |
++---------+----------+--------+
+1 row in set (0.00 sec)
+
+17. Display all mobiles in range of 10000 to 20000.
+
+mysql> select * from Mobile where Price between 10000 and 20000;
++----+-------+------------+-------+
+| ID | Model | DOM        | Price |
++----+-------+------------+-------+
+|  2 | Redmi | 2022-09-09 | 20000 |
+|  4 | Oppo  | 2020-07-08 | 10000 |
+|  5 | Vivo  | 2022-07-08 | 12000 |
++----+-------+------------+-------+
+3 rows in set (0.00 sec)
+
+
+
+18. Insert one more record with only mobile id and model.
+
+mysql> insert into Mobile (ID,Model)values (6,'Samsung');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from Mobile ;
++----+---------+------------+--------+
+| ID | Model   | DOM        | Price  |
++----+---------+------------+--------+
+|  1 | Apple15 | 2023-10-01 | 150000 |
+|  2 | Redmi   | 2022-09-09 |  20000 |
+|  3 | OnePlus | 2021-05-03 |  25000 |
+|  4 | Oppo    | 2020-07-08 |  10000 |
+|  5 | Vivo    | 2022-07-08 |  12000 |
+|  6 | Samsung | NULL       |   NULL |
++----+---------+------------+--------+
+6 rows in set (0.00 sec)
+
+
+18. Insert one more record with only mobile id and model.
+
+19. add column gst in mobile table.
+
+mysql> alter table Mobile add column GST int;
+Query OK, 0 rows affected (0.58 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from Mobile;
++----+---------+------------+--------+------+
+| ID | Model   | DOM        | Price  | GST  |
++----+---------+------------+--------+------+
+|  1 | Apple15 | 2023-10-01 | 150000 | NULL |
+|  2 | Redmi   | 2022-09-09 |  20000 | NULL |
+|  3 | OnePlus | 2021-05-03 |  25000 | NULL |
+|  4 | Oppo    | 2020-07-08 |  10000 | NULL |
+|  5 | Vivo    | 2022-07-08 |  12000 | NULL |
+|  6 | Samsung | NULL       |   NULL | NULL |
++----+---------+------------+--------+------+
+6 rows in set (0.00 sec)
+
+
+
+20. display total price of mobile as sum od price and gst
+
+mysql> Update Mobile set GST = 3600 where ID =2 ;
+Query OK, 1 row affected (0.09 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> Update Mobile set GST = 4500 where ID =3 ;
+Query OK, 1 row affected (0.11 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> Update Mobile set GST =1800  where ID =4 ;
+Query OK, 1 row affected (0.16 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> Update Mobile set GST =2160  where ID =5 ;
+Query OK, 1 row affected (0.13 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> Update Mobile set GST =NULL  where ID =6 ;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> select * from Mobile;
++----+---------+------------+--------+-------+
+| ID | Model   | DOM        | Price  | GST   |
++----+---------+------------+--------+-------+
+|  1 | Apple15 | 2023-10-01 | 150000 | 27000 |
+|  2 | Redmi   | 2022-09-09 |  20000 |  3600 |
+|  3 | OnePlus | 2021-05-03 |  25000 |  4500 |
+|  4 | Oppo    | 2020-07-08 |  10000 |  1800 |
+|  5 | Vivo    | 2022-07-08 |  12000 |  2160 |
+|  6 | Samsung | NULL       |   NULL |  NULL |
++----+---------+------------+--------+-------+
+6 rows in set (0.00 sec)
+
+22. display 2nd lowest price mobile.
+
+mysql> select Price from Mobile order by Price limit 2,1;
++-------+
+| Price |
++-------+
+| 12000 |
++-------+
+1 row in set (0.00 sec)
+
+
+23. display mobile which are manufactured in july month.
+
+
+mysql> select * from Mobile where month(DOM) = 7;
++----+-------+------------+-------+------+
+| ID | Model | DOM        | Price | GST  |
++----+-------+------------+-------+------+
+|  4 | Oppo  | 2020-07-08 | 10000 | 1800 |
+|  5 | Vivo  | 2022-07-08 | 12000 | 2160 |
++----+-------+------------+-------+------+
+2 rows in set (0.00 sec)
+
+
+25. create column person id in mobile table make it a foreign key and fill the values according which to mobiles they are having.  
+
+mysql> select p.* from Person p inner join Mobile m on p.ID=m.ID where m.Model = 'OnePlus';
++----------+--------+--------+------------+------+
+| PersonID | Name   | Salary | DOB        | ID   |
++----------+--------+--------+------------+------+
+|        1 | Aniket |  50000 | 2001-12-25 |    3 |
++----------+--------+--------+------------+------+
+1 row in set (0.00 sec)
+
+
+25. display all person details whose having mobile also those who doesnt have mobile
+
+mysql> select * from Person ;
++----------+----------+--------+------------+------+
+| PersonID | Name     | Salary | DOB        | ID   |
++----------+----------+--------+------------+------+
+|        1 | Aniket   |  50000 | 2001-12-25 |    3 |
+|        2 | Ritesh   |  56000 | 2001-02-13 |    1 |
+|        3 | Nandan   | 100000 | 2002-01-24 |    5 |
+|        4 | Shreyash |  65000 | 2001-02-14 | NULL |
+|        5 | Kaka     | 100000 | 2000-04-11 |    2 |
++----------+----------+--------+------------+------+
+5 rows in set (0.00 sec)
+
+
+
+1. Create some databases in mongo db
+
+2. insert all values in documents
+
+
+Practice> db.lamda.insert([ {PersonID:2,Name:'Ritesh',Salary: 560000, DOB:'2001-02-13'}, {PersonID:3,Name:'Nandan',Salary: 1000000, DOB:'2002-01-24'}, {PersonID:4,Name:'Shreyash',Salary: 600000, DOB:'2001-02-14'}, {PersonID:5,Name:'Kaka',Salary: 200000, DOB:'2000-04-11'}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6526dd76e173c8de94f1cb3a"),
+    '1': ObjectId("6526dd76e173c8de94f1cb3b"),
+    '2': ObjectId("6526dd76e173c8de94f1cb3c"),
+    '3': ObjectId("6526dd76e173c8de94f1cb3d")
+  }
+}
+Practice> db.lamda.find().pretty()
+[
+  {
+    _id: ObjectId("6526dd04e173c8de94f1cb39"),
+    PersonID: 1,
+    Name: 'Aniket',
+    Salary: 500000,
+    DOB: '2001-12-25'
+  },
+  {
+    _id: ObjectId("6526dd76e173c8de94f1cb3a"),
+    PersonID: 2,
+    Name: 'Ritesh',
+    Salary: 560000,
+    DOB: '2001-02-13'
+  },
+  {
+    _id: ObjectId("6526dd76e173c8de94f1cb3b"),
+    PersonID: 3,
+    Name: 'Nandan',
+    Salary: 1000000,
+    DOB: '2002-01-24'
+  },
+  {
+    _id: ObjectId("6526dd76e173c8de94f1cb3c"),
+    PersonID: 4,
+    Name: 'Shreyash',
+    Salary: 600000,
+    DOB: '2001-02-14'
+  },
+  {
+    _id: ObjectId("6526dd76e173c8de94f1cb3d"),
+    PersonID: 5,
+    Name: 'Kaka',
+    Salary: 200000,
+    DOB: '2000-04-11'
+  }
+]
+
+
+mysql> alter table student drop column class;
+Query OK, 0 rows affected (0.44 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++------+--------+-------+-----+
+| roll | name   | marks | age |
++------+--------+-------+-----+
+|    1 | Arpita |    78 |  10 |
+|    2 | Sumay  |    55 |  11 |
+|    4 | Abhay  |    89 |  12 |
+|    5 | Vinod  |    99 |  10 |
+|    6 | Binod  |    88 |  12 |
++------+--------+-------+-----+
+5 rows in set (0.00 sec)
+
+
+mysql> drop table student;
+Query OK, 0 rows affected (0.90 sec)
+

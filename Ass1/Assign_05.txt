@@ -1,0 +1,111 @@
+﻿Q. Create database diot
+
+	> use diot
+
+
+Q. Create collection students
+
+	> db.createCollection("students")
+
+Q. Insert 5 docments with keys name, rollno, email, contact, marks(out of 100).
+
+db.students.insert({name:'Anjali',roll_no:1, email:'anjali@123',contact:'654123', marks:85})
+> db.students.insert({name:'Priya',roll_no:2, email:'priya@147', contact:'758469', marks:95}
+db.students.insert({name:'Madhu',roll_no:3, email:'madhu@23', contact:'5248743', marks:90})
+> db.students.insert({name:'Navya',roll_no:4, email:'navya@3', contact:'963553', marks:70})
+> db.students.insert({{name:'Vinay',roll_no:5, email:'vini@46', contact:'852852', marks:73})
+
+
+Q. Update name of student whose rollno is 4.
+
+> db.students.update({roll_no:4},{$set:{name:'Manju'}})
+
+
+
+Q. Update contact 6754321783 of student whose marks greater than 90.
+
+> db.students.updateOne({marks:{$gt:90}},{$set:{contact:6754321783}})
+
+
+
+Q. Add one more document in collection with extra key value pair of address in it.
+
+> db.students.insert({address:'bnglr'})
+
+
+Q. display those document who are having less than 80 marks.
+
+> db.students.find({marks:{$lt:80}})
+
+
+Q. Display all documents
+
+> db.students.find().pretty()
+
+
+Q. Remove document whose having rollno5.
+
+> db.students.deleteOne({roll_no:5})
+
+
+Q. Remove collectio 	
+   > db.students.drop()
+
+
+
+
+
+
+
+
+
+
+
+Q.Create Collection emp
+
+> db.createCollection("EMP")
+
+
+*Insert Records Into EMP Collection
+
+ {no:1,name:"ST",salary:2000,role:"OB"}
+ {no:2,name:"MSD",salary:1500,role:"WK"}
+ {no:3,name:"YS",salary:1000,role:"ALR"}
+ {no:4,name:"RD",salary:1000,role:"MOB"}
+ {no:5,name:"RS",salary:500,role:"OB"}
+ {no:6,name:"BK",salary:500,role:"MOB"}
+ {no:7,name:"VK",salary:300,role:"BW"}
+ {no:8,name:"JB",salary:400,role:"BW"}
+ {no:9,name:"HP",salary:400,role:"ALR"}
+ {no:10,name:"VS",salary:300,role:"OB"}
+
+> db.EMP.insert({no:1,name:'ST',salary:2000,role:'OB'})
+WriteResult({ "nInserted" : 1 })
+> db.EMP.insert({no:2,name:'MSD',salary:1500,role:'WK'},{no:3,name:'YS',salary:1000,role:'ALR'})
+WriteResult({ "nInserted" : 1 })
+> db.EMP.insert({no:4,name:'RD',salary:1000,role:'MOB'},{no:5,name:'RS',salary:500,role:'OB'})
+WriteResult({ "nInserted" : 1 })
+> db.EMP.insert({no:6,name:'BK',salary:500,role:'MOB'},{no:7,name:'VK',salary:300,role:'BW'})
+WriteResult({ "nInserted" : 1 })
+> db.EMP.insert({no:8,name:'JB',salary:400,role:'BW'},{no:9,name:'HP',salary:400,role:'ALR'})
+WriteResult({ "nInserted" : 1 })
+> db.EMP.insert({no:10,name:'VS',salary:300,role:'OB'})
+
+
+
+*Update Salary Of Employee where Name is "ST" by +8000
+
+> db.EMP.updateOne({name:'ST'},{$inc:{salary:8000}})
+
+
+*Update Salary Of All Employee by giving an increment of +4000 each
+
+> db.EMP.updateMany({},{$inc:{salary:4000}})
+
+*update role of "MSD" as "C and WK"
+> db.EMP.updateOne({name:'MSD'},{$set:{role:'C and WK'}})
+
+
+
+
+
