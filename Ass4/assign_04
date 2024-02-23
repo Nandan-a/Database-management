@@ -1,0 +1,133 @@
+Q. Create new user 'cdac' on your local machine 'localhost'.
+
+mysql> create user 'cdac'@'localhost' identified by 'cdac@123';
+
+Q. Grant all priviliges of College databases' all tables to user 'cdac'
+
+mysql> grant all on student.student to 'cdac'@'localhost';
+Query OK, 0 rows affected (0.12 sec)
+
+Q. Grant only select privilege to user on Sample database's EMP table.
+
+mysql> grant select on sample.EMP to 'cdac'@'localhost';
+Query OK, 0 rows affected (0.08 sec)
+
+Q. Grant insert to user on Sample database's Dept table.
+
+mysql> grant select, insert on sample.DEPT TO 'cdac'@'localhost';
+Query OK, 0 rows affected (0.14 sec)
+
+Q. Login to new User
+
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u cdac -p
+Enter password: 
+
+Q. Try to insert a record in EMP table.
+
+mysql> insert into EMP values(7944,'HOLDEN','ANALYST',7900,'1980-12-18','NULL','40');
+ERROR 1142 (42000): INSERT command denied to user 'cdac'@'localhost' for table 'EMP'
+
+Q. Try to select all dept records.
+
+mysql> update DEPT set DNAME='ADVERTISING' where DNAME='RESEARCH';
+ERROR 1142 (42000): UPDATE command denied to user 'cdac'@'localhost' for table 'DEPT'
+
+Q. Drop user.
+
+mysql> drop user 'cdac'@'localhost';
+Query OK, 0 rows affected (0.12 sec)
+
+
+Q. Remove all privileges given user 'cdac' on College database.
+
+mysql> revoke all on student.student from 'cdac'@'localhost';
+Query OK, 0 rows affected (0.11 sec)
+
+
+
+
+Q. Import supplier_part_schema.sql
+
+
+mysql> source /home/diot/Database_management/Ass4/supplier_part_schema.sql;
+Query OK, 0 rows affected, 1 warning (0.06 sec)
+
+
+
+Q. Display all the Suppliers with the same Status as the supplier, ‘CLARK’. 
+
+mysql> select SNAME from suppliers where STATUS = (SELECT STATUS FROM suppliers WHERE SNAME = 'Clark');
++-------+
+| SNAME |
++-------+
+| Smith |
+| Clark |
++-------+
+2 rows in set (0.00 sec)
+
+
+Q. Display all the Parts which have more Weight than the Red parts. 
+
+mysql> select PNAME FROM parts WHERE WEIGHT > ANY(SELECT WEIGHT FROM parts WHERE COLOR='Red');
++-------+
+| PNAME |
++-------+
+| Bolt  |
+| Screw |
+| Screw |
+| Cog   |
++-------+
+4 rows in set (0.00 sec)
+
+Q. Display all the Parts with Weight less than the Green parts.
+
+mysql> select PNAME FROM parts WHERE WEIGHT < ANY(SELECT WEIGHT FROM parts WHERE COLOR='Green');
++-------+
+| PNAME |
++-------+
+| Nut   |
+| Screw |
+| Cam   |
++-------+
+3 rows in set (0.00 sec)
+
+Q. Import Sales.sql
+
+mysql> source /home/diot/Database_management/Ass4/Sales.sql;
+Query OK, 1 row affected (0.15 sec)
+
+Q. Write a query that uses a subquery to obtain all orders for the customer named Cisneros.
+   output:
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Cnum | Snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 2008 | 1007 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
++------+---------+------------+------+------+
+
+mysql> select * from orders where Cnum=all(select Cnum from customers where cname='Cisneros');
+
+Q. Write a query that will find all salespeople who have no customers located in their own city.
+
+mysql> select * from salespeople where city!=all(select city from customers);
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+2 rows in set (0.00 sec)
+
+Q. Select customers who have a greater rating than any of customer in Rome.
+   output:
++------+----------+----------+--------+------+
+| cnum | cname    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
++------+----------+----------+--------+------+
+
+mysql> select * from customers where rating>any(select rating from customers where city='Rome');
+

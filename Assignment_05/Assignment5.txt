@@ -1,0 +1,59 @@
+*MongoDB*
+
+* Create Database
+  use db_name;
+* Create Collections
+  db.createCollection("collection_name")
+* Insert one document 
+  db.db_name.insertOne({Key: Value});
+* Insert multiple documents
+  db.db_name.insertMany({Key:Value},{Key:Value});
+* Read/Display data from collections
+  db.db_name.find({Key: Value})
+  db.db_name.findOne({Key: Value})
+* Update values in collections
+  db.db_name.updateOne({Key: Value}, { $set: {Key: Value} })
+  db.db_name.updateMany({Key: Value}, { $set: {Key: Value} })
+* Remove documnets
+  db.db_name.deleteOne({ Key: Value })
+  db.db_name.deleteMany({ Key: Value })
+* Remove Collections
+  db.db_name.drop()
+
+Q. Create database diot
+Q. Create collection students
+Q. Insert 5 docments with keys name, rollno, email, contact, marks(out of 100).
+Q. Update name of student whose rollno is 4.
+Q. Update contact 6754321783 of student whose marks greater than 40.
+Q. Add one more document in collection with extra key value pair of address in it.
+Q. display those document who are having less than 40 marks.
+Q. Display all documents
+Q. Remove document whose having rollno5.
+Q. Remove collection
+
+
+Q.Create Collection emp
+
+
+*Insert Records Into EMP Collection
+
+ {no:1,name:"ST",salary:2000,role:"OB"}
+ {no:2,name:"MSD",salary:1500,role:"WK"}
+ {no:3,name:"YS",salary:1000,role:"ALR"}
+ {no:4,name:"RD",salary:1000,role:"MOB"}
+ {no:5,name:"RS",salary:500,role:"OB"}
+ {no:6,name:"BK",salary:500,role:"MOB"}
+ {no:7,name:"VK",salary:300,role:"BW"}
+ {no:8,name:"JB",salary:400,role:"BW"}
+ {no:9,name:"HP",salary:400,role:"ALR"}
+ {no:10,name:"VS",salary:300,role:"OB"}
+
+*Update Salary Of Employee where Name is "ST" by +8000
+
+*Update Salary Of All Employee by giving an increment of +4000 each
+
+*update role of "MSD" as "C and WK"
+
+
+
+

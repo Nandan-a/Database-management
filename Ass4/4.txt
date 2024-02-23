@@ -1,0 +1,2184 @@
+﻿diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u root -p;
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 7
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create user 'Naniket'@'localhost' identified by 'Naniket';
+ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables option so it cannot execute this statement
+mysql> ^C
+
+^C
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u root -p;
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create user 'Naniket@localhost' identified by 'naniket123';
+ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables option so it cannot execute this statement
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ sudo service mysql stop;
+[sudo] password for diot: 
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ sudo systemctl edit mysql;
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ sudo service mysql start;
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u root -p;
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create user 'naniket'@'localhost' identified by 'naniket123';
+Query OK, 0 rows affected (0.19 sec)
+
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u naniket -p;
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show user 
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'user' at line 1
+mysql> show user name
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'user name' at line 1
+mysql> show pwd
+    -> '
+    '> ;
+    '> ^C
+
+^C
+mysql> uname;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'uname' at line 1
+mysql> select user();
++-------------------+
+| user()            |
++-------------------+
+| naniket@localhost |
++-------------------+
+1 row in set (0.02 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| performance_schema |
++--------------------+
+2 rows in set (0.03 sec)
+
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u root -p;
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show grants for naniket@localhost;
++---------------------------------------------+
+| Grants for naniket@localhost                |
++---------------------------------------------+
+| GRANT USAGE ON *.* TO `naniket`@`localhost` |
++---------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> grant all
+    -> on pgdiot.*
+    -> To naniket@localhost;
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u naniket -p;
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| performance_schema |
+| pgdiot             |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> use pgdiot;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_pgdiot |
++------------------+
+| city             |
+| info1            |
+| info2            |
+| info3            |
+| manager          |
+| output           |
+| sales            |
+| student          |
++------------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from student;
+Empty set (0.04 sec)
+
+mysql> select * from city;
++--------+----------+
+| region | city     |
++--------+----------+
+| south  | Kolhapur |
+| west   | Mumbai   |
+| north  | Nashik   |
+| center | Pune     |
+| east   | Nagpur   |
++--------+----------+
+5 rows in set (0.03 sec)
+
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u root -p;
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> revoke all on pgdiot.* from naniket@localhost;
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> grant select 
+    -> on pgdiot.city
+    -> to naniket@localhost;
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> show grants for naniket@localhost;
++----------------------------------------------------------+
+| Grants for naniket@localhost                             |
++----------------------------------------------------------+
+| GRANT USAGE ON *.* TO `naniket`@`localhost`              |
+| GRANT SELECT ON `pgdiot`.`city` TO `naniket`@`localhost` |
++----------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u naniket -p;
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| performance_schema |
+| pgdiot             |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> use pgdiot;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_pgdiot |
++------------------+
+| city             |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from city;
++--------+----------+
+| region | city     |
++--------+----------+
+| south  | Kolhapur |
+| west   | Mumbai   |
+| north  | Nashik   |
+| center | Pune     |
+| east   | Nagpur   |
++--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> delete from city where region = east;
+ERROR 1142 (42000): DELETE command denied to user 'naniket'@'localhost' for table 'city'
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u root -p;
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> revoke select  on pgdiot.city from naniket@localhost;;
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| Sample             |
+| hr                 |
+| information_schema |
+| mysql              |
+| new                |
+| new1               |
+| performance_schema |
+| pgdiot             |
+| practice           |
+| student            |
+| sys                |
++--------------------+
+11 rows in set (0.00 sec)
+
+mysql> use student;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_student |
++-------------------+
+| BONUS             |
+| DEPT              |
+| DUMMY             |
+| EMP               |
+| SALGRADE          |
+| student           |
+| student_data      |
++-------------------+
+7 rows in set (0.00 sec)
+
+mysql> select *from student;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|    1 | Arpita |     5 |    78 |   10 |
+|    2 | Sumay  |     6 |    55 |   11 |
+|    2 | Kusum  |     7 |    89 |   12 |
+|    2 | Abhay  |     7 |    89 |   12 |
+|    3 | Vinod  |     5 |    99 |   10 |
++------+--------+-------+-------+------+
+5 rows in set (0.01 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int         | YES  |     | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
+| class | int         | YES  |     | NULL    |       |
+| marks | float       | YES  |     | NULL    |       |
+| age   | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> use pgdiot
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_pgdiot |
++------------------+
+| city             |
+| info1            |
+| info2            |
+| info3            |
+| manager          |
+| output           |
+| sales            |
+| student          |
++------------------+
+8 rows in set (0.01 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int         | NO   | PRI | NULL    |       |
+| name  | varchar(10) | NO   |     | NULL    |       |
+| marks | float       | YES  |     | 40      |       |
+| age   | tinyint     | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> grant select(roll,marks), insert(roll,name), update(age)
+    -> on pgdiot
+    -> to ^C
+
+^C
+mysql> grant select(roll,marks), insert(roll,name), update(age)
+    -> on pgdiot.student
+    -> to naniket@localhost;
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> show grants for naniket@localhost;
++------------------------------------------------------------------------------------------------------------------------+
+| Grants for naniket@localhost                                                                                           |
++------------------------------------------------------------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `naniket`@`localhost`                                                                            |
+| GRANT SELECT (`marks`, `roll`), INSERT (`name`, `roll`), UPDATE (`age`) ON `pgdiot`.`student` TO `naniket`@`localhost` |
++------------------------------------------------------------------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u naniket -p;
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 15
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use pgdiot;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_pgdiot |
++------------------+
+| student          |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from student;
+ERROR 1142 (42000): SELECT command denied to user 'naniket'@'localhost' for table 'student'
+mysql> select marks,roll from student;
+Empty set (0.00 sec)
+
+mysql> select * from student;
+ERROR 1142 (42000): SELECT command denied to user 'naniket'@'localhost' for table 'student'
+mysql> insert into student values
+    -> ^C
+
+^C
+mysql> insert into student(name,roll) values('Nandan',5);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> select roll from student;
++------+
+| roll |
++------+
+|    5 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select marks,roll from student;
++-------+------+
+| marks | roll |
++-------+------+
+|    40 |    5 |
++-------+------+
+1 row in set (0.00 sec)
+
+mysql> update student set age=10 where roll=5;
+Query OK, 1 row affected (0.14 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u root -p;
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 16
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use pgdiot;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> select * from student;
++------+--------+-------+------+
+| roll | name   | marks | age  |
++------+--------+-------+------+
+|    5 | Nandan |    40 |   10 |
++------+--------+-------+------+
+1 row in set (0.00 sec)
+
+mysql> select roll,name,marks from student where marks is >1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '>1' at line 1
+mysql> select roll,name,marks from student where marks >1;
++------+--------+-------+
+| roll | name   | marks |
++------+--------+-------+
+|    5 | Nandan |    40 |
++------+--------+-------+
+1 row in set (0.00 sec)
+
+mysql> create view stud_view as select roll,name,marks from student where marks is >1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '>1' at line 1
+mysql> create view stud_view as select roll,name,marks from student where marks >1;
+Query OK, 0 rows affected (0.24 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_pgdiot |
++------------------+
+| city             |
+| info1            |
+| info2            |
+| info3            |
+| manager          |
+| output           |
+| sales            |
+| stud_view        |
+| student          |
++------------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from stud
+    -> 
+
+^C
+mysql> select * from stud_view;
++------+--------+-------+
+| roll | name   | marks |
++------+--------+-------+
+|    5 | Nandan |    40 |
++------+--------+-------+
+1 row in set (0.01 sec)
+
+mysql> update student set marks= 58.36 where roll = 5;
+Query OK, 1 row affected (0.11 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from stud_view;
++------+--------+-------+
+| roll | name   | marks |
++------+--------+-------+
+|    5 | Nandan | 58.36 |
++------+--------+-------+
+1 row in set (0.00 sec)
+
+mysql> create table student4
+    -> (roll int,
+    -> name varchar(10),
+    -> age int,index(roll));
+Query OK, 0 rows affected (1.12 sec)
+
+mysql> desc student4;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int         | YES  | MUL | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
+| age   | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> show indexes from  student4;
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table    | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| student4 |          1 | roll     |            1 | roll        | A         |           0 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+1 row in set (0.05 sec)
+
+mysql> drop index roll from student4;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from student4' at line 1
+mysql> drop index roll on  student4;
+Query OK, 0 rows affected (0.69 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show indexes from  student4;
+Empty set (0.01 sec)
+
+mysql> create index ind_roll on student4(roll);
+Query OK, 0 rows affected (0.40 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show indexes from  student4;
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table    | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| student4 |          1 | ind_roll |            1 | roll        | A         |           0 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+1 row in set (0.05 sec)
+
+mysql> drop index ind_roll on  student4;
+Query OK, 0 rows affected (0.33 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show indexes from  student4;
+Empty set (0.00 sec)
+
+mysql> create temporary tabel mytable;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tabel mytable' at line 1
+mysql> create temporary table mytable;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create temporary table mytable
+    -> (emp_id int,
+    -> salary float,name varchar(10));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc mytable;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| emp_id | int         | YES  |     | NULL    | NULL  |
+| salary | float       | YES  |     | NULL    | NULL  |
+| name   | varchar(10) | YES  |     | NULL    | NULL  |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into mytable 
+    -> values(100,56000,'Kiran'),
+    -> values(105,27000,'Rajesh';,
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values(105,27000,'Rajesh'' at line 3
+    -> insert into mytable  values(100,56000,'Kiran'), values(105,27000,'Rajesh');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+insert into mytable  values(100,56000,'Kiran'), values(105,27000,'Rajesh')' at line 1
+mysql> , insert into mytable  values(100,56000,'Kiran'),(105,27000,'Rajesh');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', insert into mytable  values(100,56000,'Kiran'),(105,27000,'Rajesh')' at line 1
+mysql> insert into mytable  values(100,56000,'Kiran'),(105,27000,'Rajesh');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> show tables;
++------------------+
+| Tables_in_pgdiot |
++------------------+
+| city             |
+| info1            |
+| info2            |
+| info3            |
+| manager          |
+| output           |
+| sales            |
+| stud_view        |
+| student          |
+| student4         |
++------------------+
+10 rows in set (0.00 sec)
+
+mysql> select*from mytable;
++--------+--------+--------+
+| emp_id | salary | name   |
++--------+--------+--------+
+|    100 |  56000 | Kiran  |
+|    105 |  27000 | Rajesh |
++--------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u root -p;
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 17
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use pgdiot;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_pgdiot |
++------------------+
+| city             |
+| info1            |
+| info2            |
+| info3            |
+| manager          |
+| output           |
+| sales            |
+| stud_view        |
+| student          |
+| student4         |
++------------------+
+10 rows in set (0.00 sec)
+
+mysql> select *from mytable;
+ERROR 1146 (42S02): Table 'pgdiot.mytable' doesn't exist
+mysql> select * from student4;
+Empty set (0.01 sec)
+
+mysql> select * from city;
++--------+----------+
+| region | city     |
++--------+----------+
+| south  | Kolhapur |
+| west   | Mumbai   |
+| north  | Nashik   |
+| center | Pune     |
+| east   | Nagpur   |
++--------+----------+
+5 rows in set (0.01 sec)
+
+mysql> select format(region,2) from city;
++------------------+
+| format(region,2) |
++------------------+
+| 0.00             |
+| 0.00             |
+| 0.00             |
+| 0.00             |
+| 0.00             |
++------------------+
+5 rows in set, 5 warnings (0.00 sec)
+
+mysql> select replace(region,'e','ii') as name from city;
++----------+
+| name     |
++----------+
+| south    |
+| wiist    |
+| north    |
+| ciintiir |
+| iiast    |
++----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student4;
+Empty set (0.01 sec)
+
+mysql> select * from student;
++------+--------+-------+------+
+| roll | name   | marks | age  |
++------+--------+-------+------+
+|    5 | Nandan | 58.36 |   10 |
++------+--------+-------+------+
+1 row in set (0.01 sec)
+
+mysql> select sqrt(age) from student;
++--------------------+
+| sqrt(age)          |
++--------------------+
+| 3.1622776601683795 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> Delimiter &&
+mysql> create function is_first_class(marks float)
+    -> returns varchar(5)
+    -> deterministic
+    -> begin
+    -> declare result varchar(5);
+    -> if marks > 60 then
+    -> 
+Display all 813 possibilities? (y or n) 
+    -> ^C
+
+^C
+mysql> delimiter &&
+mysql> create function is_first_class(marks float)
+    -> returns varchar(5)
+    -> deterministic
+    -> begin
+    ->         declare result varchar(5);
+    ->         if marks > 60 then
+    ->            set result ="yes";
+    ->         else
+    ->             set result ="NO";
+    ->         end if;
+    ->         return result;
+    -> end &&
+Query OK, 0 rows affected (0.21 sec)
+
+mysql> delimeter;
+    -> 
+    -> 
+    -> 
+    -> delimiter;
+    -> ^C
+
+^C
+mysql> delimiter;
+    -> delimiter ;
+    -> 
+
+^C
+mysql> delimiter ;
+mysql> select name,is_first_class(marks) from student;
++--------+-----------------------+
+| name   | is_first_class(marks) |
++--------+-----------------------+
+| Nandan | NO                    |
++--------+-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select is_first_class(85);
++--------------------+
+| is_first_class(85) |
++--------------------+
+| yes                |
++--------------------+
+1 row in set (0.00 sec)
+
+
+
+
+
+
+...........................................LAB LAB LAB LAB LAB LAB LAB😎️.................................................
+
+
+
+
+
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u root -p;
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u root -p;
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u root -p;root
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create user 'cdac'@'localhost' identified as 'cdac@123';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as 'cdac@123'' at line 1
+mysql> create user 'cdac'@'localhost' identified by 'cdac@123'
+    -> ;
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> ^DBye
+
+Command 'root' not found, but can be installed with:
+
+sudo snap install root-framework
+
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ 
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u cdac -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databasesl
+    -> ^C
+
+^C
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| performance_schema |
++--------------------+
+2 rows in set (0.01 sec)
+
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| hr                 |
+| information_schema |
+| mysql              |
+| new                |
+| new1               |
+| performance_schema |
+| pgdiot             |
+| practice           |
+| sample             |
+| student            |
+| sys                |
++--------------------+
+11 rows in set (0.01 sec)
+
+mysql> use pgdiot;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_pgdiot |
++------------------+
+| BONUS            |
+| DEPT             |
+| DUMMY            |
+| EMP              |
+| SALGRADE         |
+| city             |
+| info1            |
+| info2            |
+| info3            |
+| manager          |
+| output           |
+| sales            |
+| stud_view        |
+| student          |
+| student4         |
++------------------+
+15 rows in set (0.00 sec)
+
+mysql> use student;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_student |
++-------------------+
+| BONUS             |
+| DEPT              |
+| DUMMY             |
+| EMP               |
+| SALGRADE          |
+| student           |
+| student_data      |
++-------------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from student_data;
++------+--------+--------------+-------------------+--------------------+------------+
+| roll | name   | mobilenumber | email             | address            | birthdate  |
++------+--------+--------------+-------------------+--------------------+------------+
+|    1 | Anvita | 9876543210   | anvita@gmail.com  | Shivaji Nagar Pune | 2002-12-12 |
+|    2 | Nandan | 1234567890   | nandana@gmail.com | Banglore           | 2000-02-29 |
+|    3 | Aniket | 1324354657   | aniket@gmail.com  | Pashan Pune        | 2000-02-30 |
++------+--------+--------------+-------------------+--------------------+------------+
+3 rows in set (0.02 sec)
+
+mysql> use student;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_student |
++-------------------+
+| BONUS             |
+| DEPT              |
+| DUMMY             |
+| EMP               |
+| SALGRADE          |
+| student           |
+| student_data      |
++-------------------+
+7 rows in set (0.01 sec)
+
+mysql> select * from student;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|    1 | Arpita |     5 |    78 |   10 |
+|    2 | Sumay  |     6 |    55 |   11 |
+|    2 | Kusum  |     7 |    89 |   12 |
+|    2 | Abhay  |     7 |    89 |   12 |
+|    3 | Vinod  |     5 |    99 |   10 |
++------+--------+-------+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> grant all on student .* to 'cdac@localhost'
+    -> ;
+ERROR 1410 (42000): You are not allowed to create a user with GRANT
+mysql> grant all on student.student to 'cdac@localhost'
+    -> ;
+ERROR 1410 (42000): You are not allowed to create a user with GRANT
+mysql> grant all on student.student to 'cdac'@'localhost';
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u cdac -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| performance_schema |
+| student            |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> use student;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_student |
++-------------------+
+| student           |
++-------------------+
+1 row in set (0.01 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int         | YES  |     | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
+| class | int         | YES  |     | NULL    |       |
+| marks | float       | YES  |     | NULL    |       |
+| age   | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|    1 | Arpita |     5 |    78 |   10 |
+|    2 | Sumay  |     6 |    55 |   11 |
+|    2 | Kusum  |     7 |    89 |   12 |
+|    2 | Abhay  |     7 |    89 |   12 |
+|    3 | Vinod  |     5 |    99 |   10 |
++------+--------+-------+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 15
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| hr                 |
+| information_schema |
+| mysql              |
+| new                |
+| new1               |
+| performance_schema |
+| pgdiot             |
+| practice           |
+| sample             |
+| student            |
+| sys                |
++--------------------+
+11 rows in set (0.00 sec)
+
+mysql> use sample;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_sample |
++------------------+
+| BONUS            |
+| DEPT             |
+| DUMMY            |
+| EMP              |
+| SALGRADE         |
++------------------+
+5 rows in set (0.01 sec)
+
+mysql> grant select on sample.EMP to 'cdac'@'localhost';
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u cdac -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'cdac'@'localhost' (using password: YES)
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ cdac@123;
+cdac@123: command not found
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u cdac -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 17
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| performance_schema |
+| sample             |
+| student            |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> show grants;
++-------------------------------------------------------------------+
+| Grants for cdac@localhost                                         |
++-------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `cdac`@`localhost`                          |
+| GRANT SELECT ON `sample`.`EMP` TO `cdac`@`localhost`              |
+| GRANT ALL PRIVILEGES ON `student`.`student` TO `cdac`@`localhost` |
++-------------------------------------------------------------------+
+3 rows in set (0.00 sec)
+
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ 
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> grant select, insert on sample.DEPT TO 'cdac'@'localhost';
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u cdac -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 19
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use sample;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables'
+    '> ^C^C
+
+^C
+mysql> show tables;
++------------------+
+| Tables_in_sample |
++------------------+
+| DEPT             |
+| EMP              |
++------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from DEPt;
+ERROR 1142 (42000): SELECT command denied to user 'cdac'@'localhost' for table 'DEPt'
+mysql> select * from DEPT;
++--------+------------+----------+
+| DEPTNO | DNAME      | LOC      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> insert into DEPT values
+    -> (50,'MANAGEMENT','SAN FRANSISCO');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from DEPT;
++--------+------------+---------------+
+| DEPTNO | DNAME      | LOC           |
++--------+------------+---------------+
+|     10 | ACCOUNTING | NEW YORK      |
+|     20 | RESEARCH   | DALLAS        |
+|     30 | SALES      | CHICAGO       |
+|     40 | OPERATIONS | BOSTON        |
+|     50 | MANAGEMENT | SAN FRANSISCO |
++--------+------------+---------------+
+5 rows in set (0.00 sec)
+
+mysql> update DEPT set DNAME='ADVERTISING' where DNAME='RESEARCH';
+ERROR 1142 (42000): UPDATE command denied to user 'cdac'@'localhost' for table 'DEPT'
+mysql> DELETE from DEPT where DEPTNO=20;
+ERROR 1142 (42000): DELETE command denied to user 'cdac'@'localhost' for table 'DEPT'
+mysql> select * from EMP;
++-------+--------+-----------+------+------------+------+------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL  | COMM | DEPTNO |
++-------+--------+-----------+------+------------+------+------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800 | NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600 |  300 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250 |  500 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975 | NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250 | 1400 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450 | NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000 | NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000 | NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500 |    0 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100 | NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950 | NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000 | NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300 | NULL |     10 |
++-------+--------+-----------+------+------------+------+------+--------+
+14 rows in set (0.01 sec)
+
+mysql> insert into EMP values(7944,'HOLDEN','ANALYST',7900,'1980-12-18','NULL','40');
+ERROR 1142 (42000): INSERT command denied to user 'cdac'@'localhost' for table 'EMP'
+mysql> SELECT * FROM DEPT;
++--------+------------+---------------+
+| DEPTNO | DNAME      | LOC           |
++--------+------------+---------------+
+|     10 | ACCOUNTING | NEW YORK      |
+|     20 | RESEARCH   | DALLAS        |
+|     30 | SALES      | CHICAGO       |
+|     40 | OPERATIONS | BOSTON        |
+|     50 | MANAGEMENT | SAN FRANSISCO |
++--------+------------+---------------+
+5 rows in set (0.01 sec)
+
+mysql> drop cdac;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'cdac' at line 1
+mysql> drop user cdac;
+ERROR 1227 (42000): Access denied; you need (at least one of) the CREATE USER privilege(s) for this operation
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 20
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> drop user cdac;
+ERROR 1396 (HY000): Operation DROP USER failed for 'cdac'@'%'
+mysql> drop user 'cdac'@'localhost';
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> create user 'cdac'@'localhost' identified by 'cdac123';
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u cdac -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 21
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> ^DBye
+diot@diot-HP-ProDesk-600-G5-PCI-MT:~$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 23
+Server version: 8.0.34-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> grant all *.* to 'cdac'@'localhost';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*.* to 'cdac'@'localhost'' at line 1
+mysql> grant select student.student to 'cdac'@'localhost';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'student.student to 'cdac'@'localhost'' at line 1
+mysql> grant all student.student to 'cdac'@'localhost';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'student.student to 'cdac'@'localhost'' at line 1
+mysql> grant all on student.student to 'cdac'@'localhost';
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> revoke all on student.student from 'cdac'@'localhost';
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> drop user cdac
+    -> ;
+ERROR 1396 (HY000): Operation DROP USER failed for 'cdac'@'%'
+mysql> drop user 'cdac'@'localhost';
+Query OK, 0 rows affected (0.18 sec)
+
+mysql> source /home/diot/Database_management/Ass4/supplier_part_schema.sql;
+Query OK, 0 rows affected, 1 warning (0.06 sec)
+
+Query OK, 1 row affected (0.19 sec)
+
+Database changed
+Query OK, 0 rows affected (0.93 sec)
+
+Query OK, 0 rows affected (2.55 sec)
+
+Query OK, 0 rows affected (0.86 sec)
+
+Query OK, 1 row affected (0.14 sec)
+
+Query OK, 1 row affected (0.16 sec)
+
+Query OK, 1 row affected (0.14 sec)
+
+Query OK, 1 row affected (0.12 sec)
+
+Query OK, 1 row affected (0.08 sec)
+
+Query OK, 1 row affected (0.12 sec)
+
+Query OK, 1 row affected (0.08 sec)
+
+Query OK, 1 row affected (0.12 sec)
+
+Query OK, 1 row affected (0.09 sec)
+
+Query OK, 1 row affected (0.11 sec)
+
+Query OK, 1 row affected (0.09 sec)
+
+Query OK, 1 row affected (0.11 sec)
+
+Query OK, 1 row affected (0.14 sec)
+
+Query OK, 1 row affected (0.15 sec)
+
+Query OK, 1 row affected (0.13 sec)
+
+Query OK, 1 row affected (0.08 sec)
+
+Query OK, 1 row affected (0.17 sec)
+
+Query OK, 1 row affected (0.20 sec)
+
+Query OK, 1 row affected (0.12 sec)
+
+Query OK, 1 row affected (0.11 sec)
+
+Query OK, 1 row affected (0.10 sec)
+
+Query OK, 1 row affected (0.09 sec)
+
+Query OK, 1 row affected (0.18 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| hr                 |
+| information_schema |
+| mysql              |
+| new                |
+| new1               |
+| performance_schema |
+| pgdiot             |
+| practice           |
+| sample             |
+| student            |
+| supplier_db        |
+| sys                |
++--------------------+
+12 rows in set (0.00 sec)
+
+mysql> use supplies_db
+ERROR 1049 (42000): Unknown database 'supplies_db'
+mysql> use supplier_db
+Database changed
+mysql> show tables;
++-----------------------+
+| Tables_in_supplier_db |
++-----------------------+
+| orders                |
+| parts                 |
+| suppliers             |
++-----------------------+
+3 rows in set (0.01 sec)
+
+mysql> select * from suppliers;
++------+-------+--------+--------+
+| SNUM | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+|    1 | Smith |     20 | London |
+|    2 | Jones |     10 | Paris  |
+|    3 | Blake |     30 | Paris  |
+|    4 | Clark |     20 | London |
+|    5 | Adams |     30 | Athens |
++------+-------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select SNAME from suppliers where column (SELECT STATUS FROM SUPPLIERS);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'column (SELECT STATUS FROM SUPPLIERS)' at line 1
+mysql> select SNAME from suppliers where STATUS = ANY(SELECT STATUS FROM suppliers);
++-------+
+| SNAME |
++-------+
+| Smith |
+| Jones |
+| Blake |
+| Clark |
+| Adams |
++-------+
+5 rows in set (0.02 sec)
+
+mysql> select SNAME from suppliers where STATUS = all(SELECT STATUS FROM suppliers);
+Empty set (0.00 sec)
+
+mysql> select SNAME from suppliers where STATUS = (SELECT SNAME FROM suppliers WHERE SNAME = 'CLARK');
+Empty set (0.00 sec)
+
+mysql> select STATUS from suppliers where STATUS = (SELECT SNAME FROM suppliers WHERE SNAME = 'CLARK');
+Empty set (0.00 sec)
+
+mysql> select SNAME from suppliers where STATUS = (SELECT STATUS FROM suppliers );
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select SNAME from suppliers where STATUS = (SELECT STATUS FROM suppliers);
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select SNAME from suppliers where STATUS = (SELECT STATUS FROM suppliers WHERE SNAME = 'Clark');
++-------+
+| SNAME |
++-------+
+| Smith |
+| Clark |
++-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from parts;
++------+-------+-------+--------+--------+
+| PNUM | PNAME | COLOR | WEIGHT | CITY   |
++------+-------+-------+--------+--------+
+|    1 | Nut   | Red   |   12.0 | London |
+|    2 | Bolt  | Green |   17.0 | Paris  |
+|    3 | Screw | Blue  |   17.0 | Oslo   |
+|    4 | Screw | Red   |   14.0 | London |
+|    5 | Cam   | Blue  |   12.0 | Paris  |
+|    6 | Cog   | Red   |   19.0 | London |
++------+-------+-------+--------+--------+
+6 rows in set (0.01 sec)
+
+mysql> select PNAME FROM parts WHERE WEIGHT > (SELECT COLOR FROM parts WHERE COLOR  is 'Red');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Red')' at line 1
+mysql> select PNAME FROM parts WHERE WEIGHT > (SELECT COLOR FROM parts WHERE COLOR = 'Red');
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select PNAME FROM parts WHERE WEIGHT > (SELECT WEIGHT FROM parts WHERE COLOR = 'Red');
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select PNAME FROM parts WHERE WEIGHT > (SELECT WEIGHT FROM parts WHERE COLOR='Red');
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select PNAME FROM parts WHERE WEIGHT > ANY(SELECT WEIGHT FROM parts WHERE COLOR='Red');
++-------+
+| PNAME |
++-------+
+| Bolt  |
+| Screw |
+| Screw |
+| Cog   |
++-------+
+4 rows in set (0.00 sec)
+
+mysql> select PNAME FROM parts WHERE WEIGHT < ANY(SELECT WEIGHT FROM parts WHERE COLOR='Green');
++-------+
+| PNAME |
++-------+
+| Nut   |
+| Screw |
+| Cam   |
++-------+
+3 rows in set (0.00 sec)
+
+mysql> source /home/diot/Database_management/Ass4/Sales.sql;
+Query OK, 1 row affected (0.15 sec)
+
+Database changed
+Query OK, 0 rows affected, 1 warning (0.97 sec)
+
+Query OK, 0 rows affected, 3 warnings (2.02 sec)
+
+Query OK, 0 rows affected, 3 warnings (0.64 sec)
+
+Query OK, 5 rows affected (0.17 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+Query OK, 7 rows affected (0.15 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+Query OK, 10 rows affected (0.13 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| hr                 |
+| information_schema |
+| mysql              |
+| new                |
+| new1               |
+| performance_schema |
+| pgdiot             |
+| practice           |
+| sales              |
+| sample             |
+| student            |
+| supplier_db        |
+| sys                |
++--------------------+
+13 rows in set (0.00 sec)
+
+mysql> use Sales;
+ERROR 1049 (42000): Unknown database 'Sales'
+mysql> use Sales
+ERROR 1049 (42000): Unknown database 'Sales'
+mysql> use sales
+Database changed
+mysql> show tables;
++-----------------+
+| Tables_in_sales |
++-----------------+
+| customers       |
+| orders          |
+| salespeople     |
++-----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from customers;
++------+----------+----------+--------+------+
+| cnum | cname    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2001 | Hoffman  | London   |    100 | 1001 |
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2006 | Clemens  | London   |    100 | 1001 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
+| 2007 | Pereira  | Rome     |    100 | 1004 |
++------+----------+----------+--------+------+
+7 rows in set (0.00 sec)
+
+mysql> select * from orders;
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Cnum | Snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 2008 | 1007 |
+| 3003 |  767.19 | 1990-10-03 | 2001 | 1001 |
+| 3002 | 1900.10 | 1990-10-03 | 2007 | 1004 |
+| 3005 | 5160.45 | 1990-10-03 | 2003 | 1002 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
+| 3009 | 1713.23 | 1990-10-04 | 2002 | 1003 |
+| 3007 |   75.75 | 1990-10-04 | 2004 | 1002 |
+| 3008 | 4723.00 | 1990-10-05 | 2006 | 1001 |
+| 3010 | 1309.95 | 1990-10-06 | 2004 | 1002 |
+| 3011 | 9891.88 | 1990-10-06 | 2006 | 1001 |
++------+---------+------------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from salespeople;
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from orders where Cnum=all(select Cnum from customers where cname='Cisneros');
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Cnum | Snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 2008 | 1007 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
++------+---------+------------+------+------+
+2 rows in set (0.00 sec)
+
+mysql> select Snum from orders where Snum=all(select snum from salespeople where city='SAN JOSE');
++------+
+| Snum |
++------+
+| 1002 |
+| 1002 |
+| 1002 |
++------+
+3 rows in set (0.01 sec)
+
+mysql> select * from customers where city!=(select city from salespeople);
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select * from customers where city!=all(select city from salespeople);
++------+----------+--------+--------+------+
+| cnum | cname    | city   | rating | snum |
++------+----------+--------+--------+------+
+| 2002 | Giovanni | Rome   |    200 | 1003 |
+| 2004 | Grass    | Berlin |    300 | 1002 |
+| 2007 | Pereira  | Rome   |    100 | 1004 |
++------+----------+--------+--------+------+
+3 rows in set (0.00 sec)
+
+mysql> select * from salespeople where snum=(select Snum from customers where city!=(select city from salespeople));
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select * from salespeople where snum=all(select Snum from customers where city!=(select city fr
+om salespeople));
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select * from salespeople where snum=any(select Snum from customers where city!=(select city from salespeople));
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select * from salespeople where snum=any(select snum from customers where city!=(select city from salespeople));
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select * from salespeople where city!=(select city from customers where snum=(select snum from salespeople));
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select * from salespeople where city!=any(select city from customers where snum=(select snum from salespeople));
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select * from salespeople where city!=any(select city from customers where snum=any(select snum from salespeople));
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from salespeople where snum=any(select snum from customers where city!=any(select city from salespeople));
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from salespeople where city!=(select city from customers);
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select * from salespeople where city!=any(select city from customers);
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from salespeople where city!=all(select city from customers);
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from salespeople where city!=all(select city from customers where snum=all(select snum from salespeople));
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> select city from customers where snum=all(select snum from salespeople));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> select city from customers where snum=all(select snum from salespeople));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> select city from customers where snum=all(select snum from salespeople);
+Empty set (0.00 sec)
+
+mysql> select * from orders where Cnum=all(select Cnum from customers where cname='Cisneros');
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Cnum | Snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 2008 | 1007 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
++------+---------+------------+------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from orders where Cnum=all(select cnum from customers where cname='Cisneros');
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Cnum | Snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 2008 | 1007 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
++------+---------+------------+------+------+
+2 rows in set (0.00 sec)
+
+mysql> select city from salespeople where snum=all(select snum from customers);
+Empty set (0.00 sec)
+
+mysql> select city from salespeople where snum=any(select snum from customers);
++-----------+
+| city      |
++-----------+
+| London    |
+| San Jose  |
+| London    |
+| Barcelona |
+| New York  |
++-----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from salespeople where city!=all(select city from customers where snum=any(select snum from salespeople));
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+2 rows in set (0.01 sec)
+
+mysql> select snum from salespeople;
++------+
+| snum |
++------+
+| 1001 |
+| 1002 |
+| 1004 |
+| 1007 |
+| 1003 |
++------+
+5 rows in set (0.01 sec)
+
+mysql> select snum from customers;
++------+
+| snum |
++------+
+| 1001 |
+| 1003 |
+| 1002 |
+| 1002 |
+| 1001 |
+| 1007 |
+| 1004 |
++------+
+7 rows in set (0.01 sec)
+
+mysql> update customer set='Pune' where sname='Clemens';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '='Pune' where sname='Clemens'' at line 1
+mysql> update customers set='Pune' where sname='Clemens';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '='Pune' where sname='Clemens'' at line 1
+mysql> update customers set city='Pune' where sname='Clemens';
+ERROR 1054 (42S22): Unknown column 'sname' in 'where clause'
+mysql> update customers set city='Pune' where cname='Clemens';
+Query OK, 1 row affected (0.19 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from customers;
++------+----------+----------+--------+------+
+| cnum | cname    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2001 | Hoffman  | London   |    100 | 1001 |
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2006 | Clemens  | Pune     |    100 | 1001 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
+| 2007 | Pereira  | Rome     |    100 | 1004 |
++------+----------+----------+--------+------+
+7 rows in set (0.00 sec)
+
+mysql> select * from salespeople where city!=all(select city from customers where snum=any(select snum from salespeople));
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+2 rows in set (0.00 sec)
+
+mysql> update customers set city='London' where cname='Clemens';
+Query OK, 1 row affected (0.14 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from customers;
++------+----------+----------+--------+------+
+| cnum | cname    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2001 | Hoffman  | London   |    100 | 1001 |
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2006 | Clemens  | London   |    100 | 1001 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
+| 2007 | Pereira  | Rome     |    100 | 1004 |
++------+----------+----------+--------+------+
+7 rows in set (0.00 sec)
+
+mysql> select * from salespeople;
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * orders;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'orders' at line 1
+mysql> select * from orders;
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Cnum | Snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 2008 | 1007 |
+| 3003 |  767.19 | 1990-10-03 | 2001 | 1001 |
+| 3002 | 1900.10 | 1990-10-03 | 2007 | 1004 |
+| 3005 | 5160.45 | 1990-10-03 | 2003 | 1002 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
+| 3009 | 1713.23 | 1990-10-04 | 2002 | 1003 |
+| 3007 |   75.75 | 1990-10-04 | 2004 | 1002 |
+| 3008 | 4723.00 | 1990-10-05 | 2006 | 1001 |
+| 3010 | 1309.95 | 1990-10-06 | 2004 | 1002 |
+| 3011 | 9891.88 | 1990-10-06 | 2006 | 1001 |
++------+---------+------------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from salespeople where city!=all(select city from customers where snum=any(select snum from salespeople));
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from salespeople where snum=(select snum from customers) and city!=(select city from customers);
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select * from salespeople where snum=any(select snum from customers) and city!=any(select city from customers);
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from salespeople where snum=((select snum from customers) and city!=any(select city from customers));
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select * from salespeople where snum=any((select snum from customers) and city!=any(select city from customers));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and city!=any(select city from customers))' at line 1
+mysql> select * from customers where city!=any(select city from salespeople where snum=any(select snum from customers));
++------+----------+----------+--------+------+
+| cnum | cname    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2001 | Hoffman  | London   |    100 | 1001 |
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2006 | Clemens  | London   |    100 | 1001 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
+| 2007 | Pereira  | Rome     |    100 | 1004 |
++------+----------+----------+--------+------+
+7 rows in set (0.01 sec)
+
+mysql> select * from customers where city=any(select city from salespeople where snum=any(select snum from customers));
++------+----------+----------+--------+------+
+| cnum | cname    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2006 | Clemens  | London   |    100 | 1001 |
+| 2001 | Hoffman  | London   |    100 | 1001 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
++------+----------+----------+--------+------+
+4 rows in set (0.01 sec)
+
+mysql> select * from customers where city!=any(select city from salespeople where snum!=any(select snum from customers));
++------+----------+----------+--------+------+
+| cnum | cname    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2001 | Hoffman  | London   |    100 | 1001 |
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2006 | Clemens  | London   |    100 | 1001 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
+| 2007 | Pereira  | Rome     |    100 | 1004 |
++------+----------+----------+--------+------+
+7 rows in set (0.00 sec)
+
+mysql> select city from customers where snum=any(select snum from salespeople);
++----------+
+| city     |
++----------+
+| London   |
+| Rome     |
+| San Jose |
+| Berlin   |
+| London   |
+| San Jose |
+| Rome     |
++----------+
+7 rows in set (0.00 sec)
+
+mysql> select * from salespeople where salespeople.snum=customers.cnum and salespeople.city=customers.city;
+ERROR 1054 (42S22): Unknown column 'customers.cnum' in 'where clause'
+mysql> select * from salespeople where salespeople.snum=customers.snum and salespeople.city=customers.city;
+ERROR 1054 (42S22): Unknown column 'customers.snum' in 'where clause'
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from salespeople join customers where salespeople.snum=customers.snum and salespeople.city!=customers.city;
++------+---------+-----------+------+------+----------+----------+--------+------+
+| snum | sname   | city      | comm | cnum | cname    | city     | rating | snum |
++------+---------+-----------+------+------+----------+----------+--------+------+
+| 1003 | Axelrod | New York  | 0.10 | 2002 | Giovanni | Rome     |    200 | 1003 |
+| 1002 | Serres  | San Jose  | 0.13 | 2004 | Grass    | Berlin   |    300 | 1002 |
+| 1007 | Rifkin  | Barcelona | 0.15 | 2008 | Cisneros | San Jose |    300 | 1007 |
+| 1004 | Motika  | London    | 0.11 | 2007 | Pereira  | Rome     |    100 | 1004 |
++------+---------+-----------+------+------+----------+----------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from salespeople where city!=any(select city from customers where snum=any(select snum from salespeople));
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from salespeople where snum=any(select snum from customers where city!=any(select city from salespeople));
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> select city from salespeople where snum=any(select snum from customers where city!=any(select city from salespeople));
++-----------+
+| city      |
++-----------+
+| London    |
+| San Jose  |
+| London    |
+| Barcelona |
+| New York  |
++-----------+
+5 rows in set (0.01 sec)
+
+mysql> select * from salespeople where snum=any(select snum from customers),city=any(select city from customers);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',city=any(select city from customers)' at line 1
+mysql> select * from salespeople where snum=any(select snum from customers),city!=any(select city from customers);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',city!=any(select city from customers)' at line 1
+mysql> select * from salespeople where snum=any(select snum from customers) and city!=any(select city from customers);
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> select cname,city where snum=any(select snum from customers) and city!=any(select city from customers);
+ERROR 1054 (42S22): Unknown column 'cname' in 'field list'
+mysql> select cname,city from customers where snum=any(select snum from customers) and city!=any(select city from customers);
++----------+----------+
+| cname    | city     |
++----------+----------+
+| Hoffman  | London   |
+| Giovanni | Rome     |
+| Liu      | San Jose |
+| Grass    | Berlin   |
+| Clemens  | London   |
+| Cisneros | San Jose |
+| Pereira  | Rome     |
++----------+----------+
+7 rows in set (0.00 sec)
+
+mysql> select * from salespeople where snum=any(select city from customers);
+Empty set, 7 warnings (0.00 sec)
+
+mysql> select * from salespeople where snum=all(select city from customers);
+Empty set, 5 warnings (0.00 sec)
+
+mysql> select * from salespeople where city!=all(select city from customers);
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+2 rows in set (0.00 sec)
+
+mysql> ^C
+
+^C
+mysql> select * from salespeople where city!=all(select city from customers);select * from salespeople where snum=any(select snum from customers) and city!=any(select city from customers);
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+2 rows in set (0.00 sec)
+
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from salespeople where snum=any(select snum from customers) and city!=any(select city from customers);
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from salespeople where snum=any(select snum from customers) and city!=any(select city from customers);
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from customers where snum=any(select snum from salespeople) and city!=any(select city from salespeople);
++------+----------+----------+--------+------+
+| cnum | cname    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2001 | Hoffman  | London   |    100 | 1001 |
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2006 | Clemens  | London   |    100 | 1001 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
+| 2007 | Pereira  | Rome     |    100 | 1004 |
++------+----------+----------+--------+------+
+7 rows in set (0.00 sec)
+
+mysql> select * from customers where rating>any(select rating from customers where city='Rome');
++------+----------+----------+--------+------+
+| cnum | cname    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
++------+----------+----------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from customers;
++------+----------+----------+--------+------+
+| cnum | cname    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2001 | Hoffman  | London   |    100 | 1001 |
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2006 | Clemens  | London   |    100 | 1001 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
+| 2007 | Pereira  | Rome     |    100 | 1004 |
++------+----------+----------+--------+------+
+7 rows in set (0.00 sec)
+
+mysql> select * from customers where rating>all(select rating from customers
+ where city='Rome');
++------+----------+----------+--------+------+
+| cnum | cname    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
++------+----------+----------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> 
+
